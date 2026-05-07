@@ -58,6 +58,7 @@ fumletone/
 │   ├── main.ts                            # mount App, init i18n, init db
 │   ├── App.svelte                         # top-level: Router + boot guard
 │   ├── app.css                            # design tokens (colors, spacing, type)
+│   ├── vite-env.d.ts                      # ambient types for *.svelte + vite/client
 │   ├── lib/
 │   │   ├── i18n/
 │   │   │   ├── index.ts                   # svelte-i18n init + helpers
@@ -150,7 +151,7 @@ export type Route =
 ## Task 1: Initialize project scaffold
 
 **Files:**
-- Create: `package.json`, `tsconfig.json`, `tsconfig.node.json`, `vite.config.ts`, `index.html`, `src/main.ts`, `src/App.svelte`, `src/app.css`, `.gitignore`
+- Create: `package.json`, `tsconfig.json`, `tsconfig.node.json`, `vite.config.ts`, `index.html`, `src/main.ts`, `src/App.svelte`, `src/app.css`, `src/vite-env.d.ts`, `.gitignore`
 
 - [ ] **Step 1: Initialize `package.json`**
 
@@ -368,7 +369,22 @@ html, body, #app {
 button { font: inherit; }
 ```
 
-- [ ] **Step 10: Add `.gitignore`**
+- [ ] **Step 10: Add `src/vite-env.d.ts`** (ambient types — `svelte-check` needs an explicit `*.svelte` module declaration; the triple-slash references to the `svelte` package alone are not picked up under our `tsconfig` `types` setting)
+
+Create `/home/eivind/code/fumletone/src/vite-env.d.ts`:
+
+```ts
+/// <reference types="svelte" />
+/// <reference types="vite/client" />
+
+declare module '*.svelte' {
+  import type { Component } from 'svelte';
+  const component: Component;
+  export default component;
+}
+```
+
+- [ ] **Step 11: Add `.gitignore`**
 
 Create `/home/eivind/code/fumletone/.gitignore`:
 
@@ -383,7 +399,7 @@ coverage
 *.log
 ```
 
-- [ ] **Step 11: Run dev server to verify boot**
+- [ ] **Step 12: Run dev server to verify boot**
 
 ```bash
 cd /home/eivind/code/fumletone && timeout 8 npm run dev || true
@@ -391,7 +407,7 @@ cd /home/eivind/code/fumletone && timeout 8 npm run dev || true
 
 Expected: Vite boots and prints `Local: http://localhost:5173/` within a few seconds. Timeout terminates it; that's fine.
 
-- [ ] **Step 12: Run type check**
+- [ ] **Step 13: Run type check**
 
 ```bash
 cd /home/eivind/code/fumletone && npm run check
@@ -399,7 +415,7 @@ cd /home/eivind/code/fumletone && npm run check
 
 Expected: PASS, 0 errors.
 
-- [ ] **Step 13: Commit**
+- [ ] **Step 14: Commit**
 
 ```bash
 cd /home/eivind/code/fumletone && git add -A && git commit -m "scaffold: vite + svelte 5 + ts project"
