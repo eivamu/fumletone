@@ -1337,7 +1337,7 @@ export function _peekStackForTests(): Route[] {
 }
 ```
 
-The `Route` type already includes `'splash'` and the onboarding/hub/settings routes (defined in Task 4's schema). Add it now if not yet present:
+The `Route` type was declared in this plan's Canonical Types block but is not yet added to `schema.ts`. Append it now:
 
 Append to `/home/eivind/code/fumletone/src/lib/db/schema.ts`:
 
@@ -1543,7 +1543,7 @@ Replace `/home/eivind/code/fumletone/src/App.svelte`:
   import { onMount } from 'svelte';
   import Router from '$lib/router/Router.svelte';
   import { loadProfile, profile } from '$lib/stores/profile';
-  import { reset, navigate } from '$lib/stores/route';
+  import { reset } from '$lib/stores/route';
 
   let booted = $state(false);
 
@@ -1571,7 +1571,7 @@ Replace `/home/eivind/code/fumletone/src/App.svelte`:
 cd /home/eivind/code/fumletone && npm run check && npm test
 ```
 
-Expected: type check passes; all 14 tests pass (4 db + 4 i18n + 3 audio + 4 route + 3 profile − 0).
+Expected: type check passes; all 18 tests pass (4 db + 4 i18n + 3 audio + 4 route + 3 profile).
 
 ```bash
 cd /home/eivind/code/fumletone && timeout 8 npm run dev || true
