@@ -36,8 +36,11 @@ Local-first. No accounts, no cloud sync, no analytics, no telemetry, no network 
 docs/superpowers/
 ├── specs/         canonical design specs (read first if working on a plan)
 └── plans/         per-version implementation plans (Plan 1 = foundation, Plan 2 = composer)
+hooks/             tracked git hooks; activate with `git config core.hooksPath hooks`
 CLAUDE.md          guidance for Claude Code instances working on this repo
 ```
+
+`main` is protected: every change goes through a PR. The `hooks/pre-push` script rejects direct pushes to `main` locally for a clearer error than the server-side ruleset rejection.
 
 The plan files live here in source form, but the GitHub issues are designed to be **self-contained** — an implementer should be able to work from the issues alone, without reading the plans. If a plan file is patched, the corresponding issue body is patched too.
 
