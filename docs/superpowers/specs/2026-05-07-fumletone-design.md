@@ -206,54 +206,89 @@ when it does, the fumling treats it as a normal thing.
 
 #### Composer
 
-A cell-grid sequencer the kid taps to build short loops. Time runs
-left-to-right; tracks stack vertically.
+A real-notation staff editor. The kid taps notes directly onto a staff in
+their instrument's clef and hears them play in their instrument's voice.
+The input *is* the notation — there is no separate "view as sheet music"
+step, because what the kid composes is already real music, on a real
+staff, from the first tap.
 
-**v1 ships with 2 tracks:**
+**v1 ships with a single melodic staff:**
 
-- **Rhythm track.** 8-beat grid; tap a cell to toggle a hit at that beat.
-  Real note-value notation visible if the kid taps "see as sheet music."
-- **Melody track.** y-axis shows in-scale pitches (default C pentatonic;
-  other scales unlock as the kid encounters them in Melody Wood). x-axis is
-  time. Tap a cell to drop a note. The grid only ever displays in-scale
-  pitches, so any cell tap is harmonically safe. Cells are **labeled with
-  real note names** (C, D, E, F, G, A, B) — not colors, not numbers.
+- **Clef.** Treble for the violinist; bass for the cellist. The cellist
+  stays in bass-only across all of v1.
+- **Pitch range.** The kid's instrument's first-position range. Violin:
+  G3 (open G string) to B5 (4th finger on the E string in 1st position) —
+  17 diatonic pitches in C major. Cello: C2 (open C string) to D4 (4th
+  finger on the A string in 1st position) — 16 diatonic pitches.
+- **Key & accidentals.** C major naturals by default. Accidentals (sharps
+  and flats) are reachable per-note via gesture, never via a key-signature
+  switch. The composition stays in C major; individual notes can be
+  coloured chromatically.
+- **Canvas.** 4 measures of 4/4, all visible on screen, no scrolling.
+  Monophonic — one note per beat-position.
+- **Durations available in v1.** Quarter, half, whole, eighth. Rests,
+  dotted notes, sixteenth notes, and chords are deferred to later
+  versions.
 
-**v1.5 adds a third track:** harmony/bass with chord stamps drawn from
-Chord Tower content, plus a 16-beat loop length option.
+**Gesture set:**
 
-#### Always-sounds-good rule
+- **Tap an empty staff position** → place a quarter note at that pitch.
+- **Single tap an existing note** → cycle its duration (quarter → half →
+  whole → eighth → quarter).
+- **Fast double-tap an existing note** → cycle its accidental (natural →
+  sharp → flat → natural).
+- **Long-press an existing note** → grab it. While held, drag off-staff
+  to delete, or drag vertically to change its pitch.
 
-Notes are quantized to scale and beat. Levels auto-balance. There is no ugly
-combination. A 7yo mashing the screen produces something at minimum
-listenable, and often actually pretty.
+Every placed note plays once at placement; cycle-duration and
+cycle-accidental gestures play the new state once; drag-pitch plays the
+moving pitch softly as the kid drags. Audio is the immediate feedback for
+every gesture.
+
+**v1.5 / v2 expansion** (re-scoped in light of the staff-editor model):
+rests, dotted and sixteenth notes, chord-capable input, multiple measures
+with horizontal scrolling, key signature selection, and tempo control.
+The earlier "rhythm track / melody track / chord stamps" framing from the
+cell-grid drafts is retired.
+
+#### Always-listenable rule
+
+The composer plays everything in tune, on time, and at balanced volume.
+No gain spikes, no drift, no harsh transients. The earlier
+"always-sounds-good" framing assumed a cell-grid sequencer with
+auto-quantization to a fixed scale; the staff-editor model trades that
+guarantee for expressive freedom — the kid can place a note an adult ear
+might call "wrong," and that is part of fumling. What we still guarantee
+is that *no combination of placements produces unmusical noise* (clipping,
+unbalanced gain, harsh attacks). Mistakes belong; ugliness does not.
 
 #### Sound palette
 
-A small curated set of warm timbres:
-- Soft mallet
-- Plucked kalimba
-- Music-box bells
-- Gentle synth pad
-- Light hand drum
+v1 ships with **the kid's instrument only** — sampled violin or sampled
+cello. The composer plays the kid's compositions in the voice of their
+own instrument, and that's it. No timbre selector, no alternative voices.
 
-Plus the two new core timbres at v1: **sampled (or modeled) violin** and
-**sampled (or modeled) cello**.
-
-The kid's instrument is the **default melody timbre** on the making side —
-violinist's loops sound like violin by default, cellist's like cello. Other
-timbres are still selectable; the instrument is the home base.
+The earlier curated palette (soft mallet, plucked kalimba, music-box
+bells, gentle synth pad, light hand drum) is deferred to v1.5+, where
+timbre selection becomes a meaningful musical choice tied to specific
+land content. For v1 the simpler proposition — "your instrument plays
+your music" — is the brand.
 
 #### Discovery → Make
 
-Things "found" in the lands appear in the making side as tools:
-- A rhythm found in Rhythm Island becomes a *stamp* the kid can drop into the
-  rhythm track in one tap
-- A melody fragment found in Melody Wood becomes a melody preset
-- (v2) Chord progressions found in Chord Tower become harmony stamps
+Things "found" in the lands appear in the making side as material:
+- Melody fragments found in Melody Wood drop into the kid's "Things we
+  found" scrapbook as notated phrases. Tapping one re-opens it in the
+  composer to build from.
+- Rhythm patterns found in Rhythm Island appear as small notated cards
+  in the scrapbook. (Their integration with the staff-editor composer —
+  as starter material, as a duration-fill helper, or as their own page —
+  is a Plan 3+ design call.)
+- (v2) Chord progressions found in Chord Tower extend the composer with
+  chord-capable input.
 
-This binds the two halves: discovery is *gathering tools*, making is *using
-them*.
+This binds the two halves: discovery is *gathering material*, making is
+*building with it*.
 
 #### Fumly cameos
 
@@ -266,14 +301,24 @@ fragment as-is. Cameos are gentle, skippable, brand-thread-only.
 
 #### Saving
 
-Tap a save button (satchel/heart icon). The loop drops into the scrapbook
-with an auto-generated name in the kid's language (e.g., "Tirsdagens tone" /
-"Tuesday's tune"), kid-renamable.
+Compositions auto-save while the kid edits. There is no save button. The
+moment the kid places their first note in a fresh staff, a new entry
+appears in the "Things I made" section of the scrapbook with an
+auto-generated name in the kid's language (e.g., "Tirsdagens tone" /
+"Tuesday's tune"). Names are kid-renamable from the scrapbook (long-press
+a tile).
 
-Every saved loop has a **"see as sheet music"** view. One tap, the loop
-renders on a real staff in real notation, in the kid's clef (treble or bass).
-This is brand-load-bearing: the kid's own creations arrive in real
-notation as evidence that they're already a real musician.
+To start a new song, the kid taps a **+** affordance in the composer; this
+opens a fresh empty staff while the previously-current composition stays
+saved in the scrapbook. The **+** is hidden when the current draft is
+empty, to prevent accidental empty entries.
+
+Because the composer is already a real-notation staff editor, **there is
+no separate "see as sheet music" view**. The kid's creations *are* real
+notation from the first tap — the brand-load-bearing real-notation moment
+is ambient in the composer, not a one-tap reveal. Scrapbook tiles render
+as small staff thumbnails; tapping one re-opens the composition in the
+composer.
 
 ### Scrapbook
 
@@ -284,11 +329,13 @@ Two browseable sections:
   with their fumling during encounters. v1: rhythms and melodies. v2+: chord
   shapes (from Chord Tower).
 
-Each item has an auto-generated name in the kid's language, kid-renamable.
-Tap to play / view. Loops re-open in the composer; found rhythms/melodies
-replay and can be dropped into the composer as stamps. **All scrapbook items
-render in real musical notation** — saved loops on a real staff in the
-kid's clef, found rhythms in real note values, found melodies on the staff.
+Each item has an auto-generated name in the kid's language, kid-renamable
+via long-press on its tile. Tap to play / view. Saved compositions
+re-open in the composer for further editing; found rhythms and melodies
+replay (Plan 3+ defines exactly how found material flows back into the
+composer under the staff-editor model). **All scrapbook items render in
+real musical notation** — compositions on a real staff in the kid's clef,
+found rhythms in real note values, found melodies on the staff.
 
 **Items are never deleted.** The scrapbook is a record of the kid's musical
 journey, kept forever. An "archive" gesture (tucks into a drawer) handles
