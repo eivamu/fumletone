@@ -333,8 +333,9 @@ no required reading.
 1. **Splash.** Brief — fumling waves.
 2. **Pick language.** Fumly says hello in NO and EN; kid taps the preferred
    one.
-3. **Pick your name.** Kid types their name. Skippable; default *Venn* /
-   *Friend*.
+3. **Pick your name.** Kid types their name. Skippable; default *Fumle* in
+   both languages — same word in NO and EN, an affectionate "fellow
+   fumbler" moniker that ties the kid into the brand alongside the fumling.
 4. **Customize your fumling.** Pick color (3-4 options), pick small features
    (2-3 options each).
 5. **Pick instrument.** *"Will your fumling learn the violin or the cello?"*
@@ -433,6 +434,16 @@ Recommended (subject to refinement during implementation planning):
   customization options)
 - Aesthetic style guides for The Fumling Hollow (hub) and each v1 land
   (Rhythm Island, Melody Wood, Violin Vista, Cello Valley)
+
+## Guardrail for Future Plans
+
+This spec is the **canonical source** for all naming and structural
+decisions. Plans 2+ (composer/scrapbook, illustrated hub + lands,
+encounter content, voice/animation polish) **must reference this spec**
+before introducing any new strings — especially the canonical Norwegian
+and English names of the hub and every land. Do not re-invent names from
+session context alone; if a session's context is incomplete, re-read the
+spec.
 - Soft-gating thresholds (encounter count, time on task) tuned to
   observed play patterns
 
