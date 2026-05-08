@@ -1,0 +1,69 @@
+{
+  "app": {
+    "title": "Fumletone",
+    "kidNameDefault": "Fumle"
+  },
+  "splash": {
+    "tap": "Trykk for å begynne"
+  },
+  "onboarding": {
+    "pickLanguage": {
+      "prompt": "Velg språk",
+      "norwegian": "Norsk",
+      "english": "English"
+    },
+    "pickKidName": {
+      "prompt": "Hva heter du?",
+      "placeholder": "Skriv inn navnet ditt",
+      "skip": "Hopp over",
+      "next": "Videre"
+    },
+    "customize": {
+      "prompt": "Lag fumlingen din",
+      "colorLabel": "Farge",
+      "featuresLabel": "Småting",
+      "next": "Videre",
+      "color": {
+        "sage": "Salviegrønn",
+        "rose": "Roserød",
+        "sand": "Sand",
+        "sky": "Himmelblå"
+      },
+      "feature": {
+        "hat": "Hatt",
+        "stripedSock": "Stripete sokk",
+        "roundEyes": "Runde øyne",
+        "longEars": "Lange ører"
+      }
+    },
+    "pickInstrument": {
+      "prompt": "Skal fumlingen din lære fiolin eller cello?",
+      "violin": "Fiolin",
+      "cello": "Cello",
+      "next": "Videre",
+      "confirmHint": "Trykk en gang til for å velge"
+    },
+    "nameFumling": {
+      "prompt": "Hva skal fumlingen din hete?",
+      "placeholder": "Fumly",
+      "next": "Videre"
+    }
+  },
+  "hub": {
+    "greetingNamed": "Hei, {name}!",
+    "subtitle": "Velkommen til Fumlehulen."
+  },
+  "settings": {
+    "title": "Innstillinger",
+    "language": "Språk",
+    "kidName": "Ditt navn",
+    "fumling": "Fumlingen din",
+    "fumlingName": "Navn",
+    "fumlingColor": "Farge",
+    "fumlingFeatures": "Småting",
+    "instrument": "Instrument",
+    "back": "Tilbake",
+    "reset": "Start på nytt",
+    "resetConfirm": "Hold inne for å nullstille"
+  }
+}

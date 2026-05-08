@@ -1,0 +1,69 @@
+{
+  "app": {
+    "title": "Fumletone",
+    "kidNameDefault": "Fumle"
+  },
+  "splash": {
+    "tap": "Tap to begin"
+  },
+  "onboarding": {
+    "pickLanguage": {
+      "prompt": "Pick a language",
+      "norwegian": "Norsk",
+      "english": "English"
+    },
+    "pickKidName": {
+      "prompt": "What's your name?",
+      "placeholder": "Type your name",
+      "skip": "Skip",
+      "next": "Next"
+    },
+    "customize": {
+      "prompt": "Make your fumling",
+      "colorLabel": "Colour",
+      "featuresLabel": "Small things",
+      "next": "Next",
+      "color": {
+        "sage": "Sage",
+        "rose": "Rose",
+        "sand": "Sand",
+        "sky": "Sky"
+      },
+      "feature": {
+        "hat": "Hat",
+        "stripedSock": "Striped sock",
+        "roundEyes": "Round eyes",
+        "longEars": "Long ears"
+      }
+    },
+    "pickInstrument": {
+      "prompt": "Will your fumling learn the violin or the cello?",
+      "violin": "Violin",
+      "cello": "Cello",
+      "next": "Next",
+      "confirmHint": "Tap again to choose"
+    },
+    "nameFumling": {
+      "prompt": "What's your fumling's name?",
+      "placeholder": "Fumly",
+      "next": "Next"
+    }
+  },
+  "hub": {
+    "greetingNamed": "Hi, {name}!",
+    "subtitle": "Welcome to The Fumling Hollow."
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "kidName": "Your name",
+    "fumling": "Your fumling",
+    "fumlingName": "Name",
+    "fumlingColor": "Colour",
+    "fumlingFeatures": "Small things",
+    "instrument": "Instrument",
+    "back": "Back",
+    "reset": "Start over",
+    "resetConfirm": "Hold to reset"
+  }
+}
