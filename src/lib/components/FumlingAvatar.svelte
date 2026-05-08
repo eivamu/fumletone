@@ -58,7 +58,7 @@
       <ellipse cx="170" cy="110" rx="14" ry="22" fill="#7a4d2a" />
       <line x1="170" y1="88" x2="190" y2="60" stroke="#3a2e22" stroke-width="2" />
     </g>
-  {:else}
+  {:else if instrument === 'cello'}
     <g data-part="cello">
       <ellipse cx="170" cy="135" rx="20" ry="38" fill="#5a3818" />
       <line x1="170" y1="97" x2="170" y2="50" stroke="#3a2e22" stroke-width="3" />
