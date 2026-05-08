@@ -521,11 +521,13 @@ export default defineConfig({
 
 - [ ] **Step 6: Install Playwright browsers**
 
+The `iPad (gen 7)` device profile in Step 5 has `defaultBrowserType: 'webkit'`, so install webkit (not chromium):
+
 ```bash
-cd /home/eivind/code/fumletone && npx playwright install chromium
+cd /home/eivind/code/fumletone && npx playwright install webkit
 ```
 
-Expected: Chromium binary downloads (one-time).
+Expected: Webkit binary downloads (one-time). On Linux you may also need the system libraries — `sudo npx playwright install-deps webkit` covers them (gtk-4, gstreamer*, flite*, etc.). Macs need no extra system deps.
 
 - [ ] **Step 7: Verify Playwright runs (placeholder e2e file)**
 
