@@ -1187,6 +1187,7 @@ Create `/home/eivind/code/fumletone/tests/unit/audio.test.ts`:
 
 ```ts
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import * as Tone from 'tone';
 import { unlock, isReady, _resetForTests } from '$lib/audio/engine';
 
 vi.mock('tone', () => ({
@@ -1196,6 +1197,7 @@ vi.mock('tone', () => ({
 
 beforeEach(() => {
   _resetForTests();
+  vi.mocked(Tone.start).mockClear();
 });
 
 describe('audio engine', () => {
@@ -1212,6 +1214,7 @@ describe('audio engine', () => {
     await unlock();
     await unlock();
     expect(isReady()).toBe(true);
+    expect(Tone.start).toHaveBeenCalledTimes(1);
   });
 });
 ```
