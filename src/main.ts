@@ -8,9 +8,10 @@ import { getProfile } from '$lib/db/db';
 async function boot() {
   const initialProfile = await getProfile();
   await initI18n(initialProfile?.language ?? 'nb');
-  const app = mount(App, { target: document.getElementById('app')! });
+  mount(App, { target: document.getElementById('app')! });
   registerSW({ immediate: true });
-  return app;
 }
 
-void boot();
+boot().catch((err) => {
+  console.error('[fumletone] boot failed', err);
+});
