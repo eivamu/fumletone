@@ -28,3 +28,13 @@ export const DEFAULT_PROFILE: KidProfile = {
   createdAt: new Date(0),
   updatedAt: new Date(0),
 };
+
+export type Route =
+  | { name: 'splash' }
+  | { name: 'onboarding/pickLanguage' }
+  | { name: 'onboarding/pickKidName' }
+  | { name: 'onboarding/customizeFumling' }
+  | { name: 'onboarding/pickInstrument' }
+  | { name: 'onboarding/nameFumling' }
+  | { name: 'hub' }
+  | { name: 'settings' };
